@@ -17,7 +17,7 @@ function ProductScreen(props) {
         }
 
         fetchProduct();
-    }, []);
+    }, [match]);
 
     return (
         <>

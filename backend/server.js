@@ -1,4 +1,5 @@
-//external node modules, installed via npm
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require("express");
 const app = express();
 
@@ -7,7 +8,7 @@ const products = require("./data/products");
 
 app.route("/")
 .get(function(req, res){
-    res.send("API is running");
+    res.send("API is running...");
 });
 
 app.route("/api/products")
@@ -21,7 +22,8 @@ app.route("/api/products/:id")
     res.json(product);
 });
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(process.env.PORT || 5000, function() {
-    console.log("Server started successffuly on port 5000");
+app.listen(PORT, function() {
+    console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`);
   });
