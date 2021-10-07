@@ -1,0 +1,22 @@
+{
+  "name": "eshop",
+  "version": "1.0.0",
+  "description": "Webshop from scratch using MERN",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krupiceva/eshop.git"
+  },
+  "author": "Krupiceva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Krupiceva/eshop/issues"
+  },
+  "homepage": "https://github.com/Krupiceva/eshop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
