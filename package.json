@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Webshop from scratch using MERN",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon backend/server.js",
     "server": "nodemon backend/server.js",
@@ -22,6 +23,7 @@
   "dependencies": {
     "concurrently": "^6.3.0",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^6.0.9"
   }
 }
