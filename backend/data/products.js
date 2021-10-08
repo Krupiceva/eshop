@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Nike Air Zoom Pegasus 37',
     image: '/images/pegasus_37.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Nike Air Zoom Pegasus 37',
     image: '/images/pegasus_37_1.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Nike Air Zoom Pegasus 38',
     image: '/images/pegasus_38.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Nike Air Zoom Trail 3',
     image: '/images/pegasus_trail_3.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Nike Air Zoom Trail 3 GORE-TEX',
     image: '/images/pegasus_trail_3_gtx.jpg',
     description:
