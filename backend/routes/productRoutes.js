@@ -8,7 +8,7 @@ import Product from "../models/productModel.js";
 // @access  Public
 router.route("/")
 .get(asyncHandler(async function(req, res){
-    const products = await Product.find({})
+    const products = await Product.find({});
 
     res.json(products);
 }));
