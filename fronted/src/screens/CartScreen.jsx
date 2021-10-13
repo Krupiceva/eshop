@@ -25,6 +25,7 @@ function CartScreen(props) {
 
     function removeFromCartHandler(id){
         dispatch(removeFromCart(id));
+        history.replace("/cart");
     }
 
     function checkoutHandler(){
