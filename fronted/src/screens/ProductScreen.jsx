@@ -11,7 +11,7 @@ import { listProductDetails, clearProductDetails } from "../actions/productActio
 function ProductScreen(props) {
     const { history, match } = props;
 
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
 
     const dispatch = useDispatch();
 
