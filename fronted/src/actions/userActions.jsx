@@ -15,7 +15,7 @@ import {
 
          const config = {
              headers: {
-                 "Content-Type": "aplication/json"
+                 "Content-Type": "application/json"
              }
          }
 
