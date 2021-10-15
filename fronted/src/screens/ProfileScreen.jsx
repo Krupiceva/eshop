@@ -4,7 +4,8 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
+import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 function ProfileScreen(props) {
 
@@ -13,6 +14,7 @@ function ProfileScreen(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [profileUpdated, setProfileUpdated] = useState(false);
     const [message, setMessage] = useState(null);
 
     const dispatch = useDispatch();
@@ -23,26 +25,36 @@ function ProfileScreen(props) {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+    const { success } = userUpdateProfile;
+
     useEffect(() => {
         if(!userInfo){
             history.push("/login");
         }
         else{
-            if(!user.name){
+            if(!user || !user.name){
                 dispatch(getUserDetails("profile"));
+            } 
+            else if(success){
+                dispatch({ type: USER_UPDATE_PROFILE_RESET });
+                dispatch(getUserDetails("profile"));
+                setProfileUpdated(true);
             } else {
                 setName(user.name);
                 setEmail(user.email);
             }
         }
-    }, [dispatch, history, userInfo, user]);
+    }, [dispatch, history, userInfo, user, success]);
 
     function submitHandler(e){
         e.preventDefault();
+        setProfileUpdated(false);
+        setMessage(null);
         if(password !== confirmPassword){
             setMessage("Passwords do not match!");
         } else {
-            //DISPATCH UPDATE PROFILE
+            dispatch(updateUserProfile({ id: user._id, name, email, password }));
         }
         
     }
@@ -53,6 +65,7 @@ function ProfileScreen(props) {
                 <h2>User Profile</h2>
                 {message && <Message variant="danger">{message}</Message>}
                 {error && <Message variant="danger">{error}</Message>}
+                {profileUpdated && <Message variant="success">Profile Updated!</Message>}
                 {loading && <Loader />}
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId="name">
