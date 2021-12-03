@@ -45,6 +45,11 @@ const orderSchema = mongoose.Schema({
         required: true,
         default: 0.0
     },
+    withoutTaxPrice: {
+        type: Number,
+        required: true,
+        default: 0.0
+    },
     totalPrice: {
         type: Number,
         required: true,
