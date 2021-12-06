@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from '../components/CheckoutSteps';
+import { createOrder } from '../actions/orderActions';
 
-function PlaceOrderScreen() {
+function PlaceOrderScreen(props) {
+    const { history } = props;
+
+    const dispatch = useDispatch();
+
     const cart = useSelector(state => state.cart);
 
     //Calculate Prices, PDV 25% included in listed prices
@@ -20,8 +25,27 @@ function PlaceOrderScreen() {
         return (Math.round(num * 100) / 100).toFixed(2);
     }
 
+    const orderCreate = useSelector(state => state.orderCreate);
+    const { order, success, error } = orderCreate;
+
+    useEffect(() => {
+        if(success){
+            history.push(`/order/${order._id}`);
+        }
+    }, [history, success, order]);
+
     const placeOrderHandler = () => {
-        console.log("order");
+        dispatch(createOrder({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            withoutTaxPrice: cart.withoutTaxPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: cart.totalPrice,
+
+        }));
     }
 
     return (
@@ -104,6 +128,11 @@ function PlaceOrderScreen() {
                                     <Col>${cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
+
+                            <ListGroup.Item>
+                                {error && <Message variant="danger">{error}</Message>}
+                            </ListGroup.Item>
+
                             <ListGroup.Item>
                                 <Button
                                     type="button"

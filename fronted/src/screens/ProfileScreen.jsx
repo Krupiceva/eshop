@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -9,7 +9,7 @@ import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 function ProfileScreen(props) {
 
-    const {  location, history } = props;
+    const { history } = props;
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
