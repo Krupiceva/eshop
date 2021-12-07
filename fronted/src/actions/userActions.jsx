@@ -18,7 +18,8 @@ import {
     //USER_UPDATE_PROFILE_RESET
     USER_LIST_REQUEST,
     USER_LIST_SUCCESS,
-    USER_LIST_FAIL
+    USER_LIST_FAIL,
+    USER_LIST_RESET
  } from "../constants/userConstants";
 
  import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
@@ -61,6 +62,9 @@ import {
     });
     dispatch({
         type: USER_LOGOUT
+    });
+    dispatch({
+        type: USER_LIST_RESET
     });
 
  }
