@@ -9,7 +9,7 @@ import {
     ORDER_PAY_REQUEST,
     ORDER_PAY_SUCCESS,
     ORDER_PAY_FAIL,
-    ORDER_PAY_RESET,
+    //ORDER_PAY_RESET,
     ORDER_LIST_MY_SUCCESS,
     ORDER_LIST_MY_REQUEST,
     ORDER_LIST_MY_FAIL
@@ -17,7 +17,7 @@ import {
 
 import { logout } from './userActions'
 
-import { USER_LOGIN_SUCCESS } from "../constants/userConstants";
+//import { USER_LOGIN_SUCCESS } from "../constants/userConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
