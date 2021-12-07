@@ -56,7 +56,7 @@ function UserListScreen() {
                                     <Button 
                                         variant="danger"
                                         className="btn-sm"
-                                        onClisk={() => deleteHandler(user._id)}
+                                        onClick={() => deleteHandler(user._id)}
                                     >
                                         <i className="fas fa-trash"></i>
                                     </Button>
