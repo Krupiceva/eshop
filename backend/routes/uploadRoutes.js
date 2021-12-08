@@ -1,13 +1,14 @@
 import path from "path";
 import express from "express";
 import multer from "multer";
+import { protect, admin } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 const storage = multer.diskStorage({
-    destination(req, file, cd){
+    destination(req, file, cb){
         cb(null, "uploads/");
     },
-    filename(req, file, cd){
+    filename(req, file, cb){
         cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 
