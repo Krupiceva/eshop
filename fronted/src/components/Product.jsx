@@ -23,7 +23,7 @@ function Product(props) {
                      />
                 </Card.Text>
                 <Card.Text as="h3">
-                    {product.price} kn
+                    ${product.price}
                 </Card.Text>
             </Card.Body>
         </Card>

@@ -4,6 +4,7 @@ import { Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap"
 import Rating from "../components/Rating";
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Meta from '../components/Meta';
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails, clearProductDetails, createProductReview } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productsConstants';
@@ -56,10 +57,13 @@ function ProductScreen(props) {
     }
 
     return (
-        <>
+        <>  
             <Link className="btn btn-light my-3" to="/">Go Back</Link>
             {loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> : (
                 <>
+                <Meta
+                    title={product.name}
+                />
                 <Row>
                     <Col md={6}>
                         <Image src={product.image} alt={product.name} fluid/>
@@ -76,7 +80,7 @@ function ProductScreen(props) {
                                 />
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                Price: {product.price} kn
+                                Price: ${product.price}
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 Description: {product.description}
@@ -92,7 +96,7 @@ function ProductScreen(props) {
                                             Price:
                                         </Col>
                                         <Col>
-                                            <strong>{product.price} kn</strong>
+                                            <strong>${product.price}</strong>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
