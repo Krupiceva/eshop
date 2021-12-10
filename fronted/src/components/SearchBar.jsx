@@ -23,7 +23,7 @@ function SearchBar(props) {
                 placeholder="Search Products..."
                 className="mr-sm-2 ml-sm-5 mt-2"></Form.Control>
             <Button type="submit" variant="outline-light" className="ms-2 mt-2" >
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
             </Button>
         </Form>
     );
